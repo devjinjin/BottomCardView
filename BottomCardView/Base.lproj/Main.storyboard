@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgq-ab-LHH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="792.75362318840587" y="77.678571428571431"/>
+            <point key="canvasLocation" x="-1" y="-66"/>
         </scene>
         <!--Card Detail View Controller-->
         <scene sceneID="lxd-4K-VNj">
@@ -94,6 +94,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="UOG-KB-SNz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RW7-Ng-Jc6" firstAttribute="top" secondItem="OVY-AC-2mV" secondAttribute="top" constant="44" id="Do7-wN-mIR"/>
@@ -103,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BnW-Fg-4f5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1551" y="42"/>
+            <point key="canvasLocation" x="771" y="-102"/>
         </scene>
     </scenes>
     <resources>

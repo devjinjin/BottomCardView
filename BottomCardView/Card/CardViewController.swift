@@ -8,7 +8,7 @@
 import UIKit
 
 class CardViewController: UIViewController {
-    
+    //추가
     //실제 화면이 보여질 뷰
     @IBOutlet weak var cardView: UIView!
     
