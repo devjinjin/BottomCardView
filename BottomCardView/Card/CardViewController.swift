@@ -43,10 +43,10 @@ class CardViewController: UIViewController {
         let translation = panRecognizer.translation(in: self.view)
         
         switch panRecognizer.state {
-        case .began:
+        case .began: //현재 위치값
             cardPanStartingTopConstraint = cardViewTopConstraint.constant
             
-        case .changed:
+        case .changed: //변경 될때마다
             if self.cardPanStartingTopConstraint + translation.y > 30.0 {
                 self.cardViewTopConstraint.constant = self.cardPanStartingTopConstraint + translation.y
             }
@@ -54,11 +54,9 @@ class CardViewController: UIViewController {
             // change the dimmer view alpha based on how much user has dragged
             dimmerView.alpha = dimAlphaWithCardTopConstraint(value: self.cardViewTopConstraint.constant)
             
-        case .ended:
+        case .ended: //종료시
             if velocity.y > 1500.0 {
-
                 hideCardView()
-
                 return
             }
             let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
@@ -66,11 +64,11 @@ class CardViewController: UIViewController {
             if let safeAreaHeight = keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height,
                let bottomPadding = keyWindow?.safeAreaInsets.bottom
             {
-                if self.cardViewTopConstraint.constant < (safeAreaHeight + bottomPadding) * 0.80 {
+                if self.cardViewTopConstraint.constant < (safeAreaHeight + bottomPadding) * 0.70 {
                     showCard(atState: .expanded)
                 } else if self.cardViewTopConstraint.constant < (safeAreaHeight) - 70 {
                     showCard(atState: .half)
-                } else {
+                } else {//사용하지 않는 조건이지만 만약을 위해서 추가함
                     hideCardView()
                 }
             }
@@ -84,9 +82,7 @@ class CardViewController: UIViewController {
         initUI()
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        showCard(atState: .hidden)
-//    }
+    //화면 초기값 설정
     func initUI() {
         //초기값
         cardViewState = .hidden
@@ -127,40 +123,23 @@ extension CardViewController {
         
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         
-        // ensure safe area height and safe area bottom padding is not nil
-        //      guard let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height,
-        //        let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom else {
-        //        return fullDimAlpha
-        //      }
         guard let safeAreaHeight = keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height, let bottomPadding = keyWindow?.safeAreaInsets.bottom else {
             return fullDimAlpha
         }
         
-        // when card view top constraint value is equal to this,
-        // the dimmer view alpha is dimmest (0.7)
         let fullDimPosition = (safeAreaHeight + bottomPadding) / 2.0
         
-        // when card view top constraint value is equal to this,
-        // the dimmer view alpha is lightest (0.0)
         let noDimPosition = safeAreaHeight + bottomPadding
         
-        // if card view top constraint is lesser than fullDimPosition
-        // it is dimmest
         if value < fullDimPosition {
             return fullDimAlpha
         }
         
-        // if card view top constraint is more than noDimPosition
-        // it is dimmest
         if value > noDimPosition {
             return 0.0
         }
-        
-        // else return an alpha value in between 0.0 and 0.7 based on the top constraint value
         return fullDimAlpha * 1 - ((value - fullDimPosition) / fullDimPosition)
     }
-    
-    
     
     //Card뷰 Hidden 처리 함수
     private func hideCardView() {
@@ -196,7 +175,8 @@ extension CardViewController {
         //                }
         //            }
         //        })
-        cardViewState = .hidden
+        
+        cardViewState = .hidden //현재 State
         // start animation
         hideCard.startAnimation()
     }
@@ -214,16 +194,14 @@ extension CardViewController {
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         if let safeAreaHeight = keyWindow?.safeAreaLayoutGuide.layoutFrame.size.height, let bottomPadding = keyWindow?.safeAreaInsets.bottom
         {
-            
             if atState == .expanded {
                 // if state is expanded, top constraint is 30pt away from safe area top
                 cardViewTopConstraint.constant = CardViewController.CARD_VIEW_TOP_MARGIN
             } else if atState == .half {
                 cardViewTopConstraint.constant = (safeAreaHeight + bottomPadding) / 2.0
-            } else {
+            } else { //hidden
                 cardViewTopConstraint.constant = safeAreaHeight + bottomPadding
             }
-            
             cardPanStartingTopConstraint = cardViewTopConstraint.constant
         }
         
