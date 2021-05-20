@@ -1,24 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="BottomCardView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTM-bN-xQu">
+                                <rect key="frame" x="184" y="96" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonClickAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A4w-vW-Cyz"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qTM-bN-xQu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7aB-qW-P1k"/>
+                            <constraint firstItem="qTM-bN-xQu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="52" id="vre-K5-vsx"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-19" y="78"/>
+        </scene>
+        <!--Card View Controller-->
+        <scene sceneID="I2H-PD-UAD">
+            <objects>
+                <viewController storyboardIdentifier="CardViewController" id="1U9-ai-2GI" customClass="CardViewController" customModule="BottomCardView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nn8-vK-dIU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PuS-sb-Sux" userLabel="Dimmer View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBi-pf-fJS" userLabel="CardView">
+                                <rect key="frame" x="0.0" y="74" width="414" height="822"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bc-vg-kLF">
+                                        <rect key="frame" x="0.0" y="30" width="414" height="792"/>
+                                        <connections>
+                                            <segue destination="1Hu-jD-Vaq" kind="embed" id="Suj-B7-JUV"/>
+                                        </connections>
+                                    </containerView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide_popup_line" translatesAutoresizingMaskIntoConstraints="NO" id="EYg-De-yiP">
+                                        <rect key="frame" x="187.5" y="15" width="39" height="3"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="8bc-vg-kLF" secondAttribute="bottom" id="140-H6-zth"/>
+                                    <constraint firstItem="8bc-vg-kLF" firstAttribute="top" secondItem="QBi-pf-fJS" secondAttribute="top" constant="30" id="6CI-Mg-O6T"/>
+                                    <constraint firstItem="EYg-De-yiP" firstAttribute="top" secondItem="QBi-pf-fJS" secondAttribute="top" constant="15" id="7hg-Yc-UQX"/>
+                                    <constraint firstItem="8bc-vg-kLF" firstAttribute="leading" secondItem="QBi-pf-fJS" secondAttribute="leading" id="b5u-sB-xyk"/>
+                                    <constraint firstAttribute="trailing" secondItem="8bc-vg-kLF" secondAttribute="trailing" id="wjD-6b-VUh"/>
+                                    <constraint firstItem="EYg-De-yiP" firstAttribute="centerX" secondItem="QBi-pf-fJS" secondAttribute="centerX" id="xGn-xX-69w"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aXO-PC-RZe"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                        <constraints>
+                            <constraint firstItem="aXO-PC-RZe" firstAttribute="trailing" secondItem="QBi-pf-fJS" secondAttribute="trailing" id="BdX-Mc-upa"/>
+                            <constraint firstItem="PuS-sb-Sux" firstAttribute="leading" secondItem="aXO-PC-RZe" secondAttribute="leading" id="Bw6-6g-FtZ"/>
+                            <constraint firstItem="QBi-pf-fJS" firstAttribute="bottom" secondItem="aXO-PC-RZe" secondAttribute="bottom" constant="34" id="MET-Hq-VZ5"/>
+                            <constraint firstItem="aXO-PC-RZe" firstAttribute="trailing" secondItem="PuS-sb-Sux" secondAttribute="trailing" id="ffw-um-8C6"/>
+                            <constraint firstItem="QBi-pf-fJS" firstAttribute="top" secondItem="aXO-PC-RZe" secondAttribute="top" constant="30" id="gwa-Ub-vIE"/>
+                            <constraint firstItem="QBi-pf-fJS" firstAttribute="leading" secondItem="aXO-PC-RZe" secondAttribute="leading" id="jKt-tA-HLv"/>
+                            <constraint firstItem="aXO-PC-RZe" firstAttribute="bottom" secondItem="PuS-sb-Sux" secondAttribute="bottom" id="phq-ZL-3g0"/>
+                            <constraint firstItem="aXO-PC-RZe" firstAttribute="top" secondItem="PuS-sb-Sux" secondAttribute="top" constant="44" id="pj0-Sp-kuK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardView" destination="QBi-pf-fJS" id="BLB-Pk-CQ1"/>
+                        <outlet property="cardViewTopConstraint" destination="gwa-Ub-vIE" id="tlm-id-RJg"/>
+                        <outlet property="dimmerView" destination="PuS-sb-Sux" id="poc-66-mYW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgq-ab-LHH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792.75362318840587" y="77.678571428571431"/>
+        </scene>
+        <!--Card Detail View Controller-->
+        <scene sceneID="lxd-4K-VNj">
+            <objects>
+                <viewController id="1Hu-jD-Vaq" customClass="CardDetailViewController" customModule="BottomCardView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OVY-AC-2mV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="792"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="essential_card_L" translatesAutoresizingMaskIntoConstraints="NO" id="RW7-Ng-Jc6">
+                                <rect key="frame" x="87" y="44" width="240" height="438"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="5JG-YX-jlh"/>
+                                    <constraint firstAttribute="height" constant="438" id="XeY-8X-saM"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RW7-Ng-Jc6" firstAttribute="top" secondItem="OVY-AC-2mV" secondAttribute="top" constant="44" id="Do7-wN-mIR"/>
+                            <constraint firstItem="RW7-Ng-Jc6" firstAttribute="centerX" secondItem="OVY-AC-2mV" secondAttribute="centerX" id="Pah-Bb-Ry1"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BnW-Fg-4f5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1551" y="42"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="essential_card_L" width="214" height="284"/>
+        <image name="slide_popup_line" width="39" height="3"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
