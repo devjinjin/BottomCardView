@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1U9-ai-2GI">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -8,34 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="BottomCardView" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTM-bN-xQu">
-                                <rect key="frame" x="184" y="96" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="buttonClickAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A4w-vW-Cyz"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="qTM-bN-xQu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7aB-qW-P1k"/>
-                            <constraint firstItem="qTM-bN-xQu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="52" id="vre-K5-vsx"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-19" y="78"/>
-        </scene>
         <!--Card View Controller-->
         <scene sceneID="I2H-PD-UAD">
             <objects>
@@ -44,6 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7N-iw-1nE">
+                                <rect key="frame" x="184" y="104" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="ShowCardViewAction:" destination="1U9-ai-2GI" eventType="touchUpInside" id="yvu-dz-Uei"/>
+                                </connections>
+                            </button>
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PuS-sb-Sux" userLabel="Dimmer View">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,6 +59,8 @@
                             <constraint firstItem="aXO-PC-RZe" firstAttribute="trailing" secondItem="QBi-pf-fJS" secondAttribute="trailing" id="BdX-Mc-upa"/>
                             <constraint firstItem="PuS-sb-Sux" firstAttribute="leading" secondItem="aXO-PC-RZe" secondAttribute="leading" id="Bw6-6g-FtZ"/>
                             <constraint firstItem="QBi-pf-fJS" firstAttribute="bottom" secondItem="aXO-PC-RZe" secondAttribute="bottom" constant="34" id="MET-Hq-VZ5"/>
+                            <constraint firstItem="e7N-iw-1nE" firstAttribute="centerX" secondItem="aXO-PC-RZe" secondAttribute="centerX" id="XIX-uy-zjN"/>
+                            <constraint firstItem="e7N-iw-1nE" firstAttribute="top" secondItem="aXO-PC-RZe" secondAttribute="top" constant="60" id="fYM-HB-ALw"/>
                             <constraint firstItem="aXO-PC-RZe" firstAttribute="trailing" secondItem="PuS-sb-Sux" secondAttribute="trailing" id="ffw-um-8C6"/>
                             <constraint firstItem="QBi-pf-fJS" firstAttribute="top" secondItem="aXO-PC-RZe" secondAttribute="top" constant="30" id="gwa-Ub-vIE"/>
                             <constraint firstItem="QBi-pf-fJS" firstAttribute="leading" secondItem="aXO-PC-RZe" secondAttribute="leading" id="jKt-tA-HLv"/>
